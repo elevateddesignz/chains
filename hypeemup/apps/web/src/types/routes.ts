@@ -1,0 +1,24 @@
+export type Route =
+  | '/'
+  | `/builder`
+  | `/shop`
+  | `/collections`
+  | `/collections/${string}`
+  | `/categories/${string}`
+  | `/product/${string}`
+  | `/cart`
+  | `/checkout`
+  | `/success`
+  | `/cancel`
+  | `/account`
+  | `/account/orders`
+  | `/account/orders/${string}`
+  | `/account/addresses`
+  | `/account/saved-designs`
+  | `/auth/login`
+  | `/auth/register`
+  | `/auth/forgot`
+  | `/auth/reset`
+  | `/pages/${string}`
+  | `/admin`
+  | `/admin/${string}`;

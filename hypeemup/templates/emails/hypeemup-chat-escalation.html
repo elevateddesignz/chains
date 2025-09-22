@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chat Escalation</title>
+    <style>
+      body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #0b1f3a; color: #ffffff; padding: 32px; }
+      .card { background: #101f35; border-radius: 16px; padding: 24px; max-width: 640px; margin: 0 auto; box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45); }
+      h1 { color: #ff6f3c; font-size: 20px; text-transform: uppercase; letter-spacing: 2px; }
+      a { color: #ff6f3c; }
+      .meta { margin-top: 16px; font-size: 14px; line-height: 1.6; }
+      .footer { margin-top: 32px; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="LOGO_URL" alt="HypeEmUp" style="height: 48px;" />
+      <h1>Chat escalation pending human follow-up</h1>
+      <p>Session <strong>SESSION_ID</strong> needs a human specialist.</p>
+      <div class="meta">
+        <p><strong>Last user message:</strong><br />LAST_USER</p>
+        <p><strong>Summary:</strong><br />SUMMARY</p>
+        <p><strong>Customer email:</strong> CUSTOMER_EMAIL</p>
+        <p><strong>Customer phone:</strong> CUSTOMER_PHONE</p>
+        <p><strong>Authenticated:</strong> AUTH_STATUS</p>
+      </div>
+      <p>
+        Open the admin inbox to respond:
+        <a href="ADMIN_LINK">ADMIN_LINK</a>
+      </p>
+      <p class="footer">Generated NOW • HypeEmUp concierge</p>
+    </div>
+  </body>
+</html>
