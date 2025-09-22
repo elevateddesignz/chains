@@ -25,26 +25,31 @@ export function Contact() {
       message: formData.get("message")?.toString() ?? ""
     };
 
-    const response = await fetch("/api/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    let result: { message?: string } = {};
     try {
-      result = await response.json();
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      let result: { message?: string } = {};
+      try {
+        result = await response.json();
+      } catch (error) {
+        console.error("Failed to parse response", error);
+      }
+
+      if (!response.ok) {
+        setFormState({ status: "error", message: result.message ?? "Something went wrong." });
+        return;
+      }
+
+      form.reset();
+      setFormState({ status: "success", message: result.message ?? "Thanks! We'll be in touch." });
     } catch (error) {
-      console.error("Failed to parse response", error);
+      console.error("Request failed", error);
+      setFormState({ status: "error", message: "We couldn't send your request. Please try again." });
     }
-
-    if (!response.ok) {
-      setFormState({ status: "error", message: result.message ?? "Something went wrong." });
-      return;
-    }
-
-    form.reset();
-    setFormState({ status: "success", message: result.message ?? "Thanks! We'll be in touch." });
   }
 
   return (
@@ -73,6 +78,7 @@ export function Contact() {
         </div>
         <form
           onSubmit={handleSubmit}
+          aria-busy={formState.status === "loading"}
           className="space-y-5 rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-lg shadow-primary/20"
         >
           <div className="grid gap-5 sm:grid-cols-2">
@@ -132,15 +138,17 @@ export function Contact() {
           >
             {formState.status === "loading" ? "Scheduling..." : "Request my audit"}
           </button>
-          {formState.message && (
-            <p
-              className={`text-sm ${
-                formState.status === "error" ? "text-red-400" : "text-green-400"
-              }`}
-            >
-              {formState.message}
-            </p>
-          )}
+          <div aria-live="polite" role="status">
+            {formState.message && (
+              <p
+                className={`text-sm ${
+                  formState.status === "error" ? "text-red-400" : "text-green-400"
+                }`}
+              >
+                {formState.message}
+              </p>
+            )}
+          </div>
         </form>
       </div>
     </section>

@@ -12,6 +12,7 @@ export async function POST(request: Request) {
   const name = (body.name ?? "").trim();
   const email = (body.email ?? "").trim().toLowerCase();
   const company = (body.company ?? "").trim();
+  const launchDate = (body.launchDate ?? "").trim();
   const message = (body.message ?? "").trim();
 
   if (name.length < 2) {
@@ -26,11 +27,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Share a bit more about your launch so we can prepare." }, { status: 400 });
   }
 
+  if (launchDate.length > 0 && launchDate.length > 60) {
+    return NextResponse.json({ message: "Launch timing looks a bit long—keep it under 60 characters." }, { status: 400 });
+  }
+
   // In production we would forward to a CRM or email provider.
   console.info("New hype audit request", {
     name,
     email,
     company,
+    launchDate,
     message: message.slice(0, 500)
   });
 

@@ -20,7 +20,7 @@ export function Work() {
             <div className="absolute -top-16 right-8 h-40 w-40 rounded-full bg-gradient-to-br from-primary/50 via-accent/40 to-transparent blur-3xl" />
             <div className="relative space-y-5">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-base font-semibold text-white/70">
-                0{index + 1}
+                {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="text-2xl font-semibold text-white">{section.title}</h3>
               <p className="text-sm text-white/70">{section.description}</p>
