@@ -1,0 +1,260 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  staff
+  customer
+}
+
+enum OrderStatus {
+  pending
+  paid
+  processing
+  shipped
+  delivered
+  canceled
+}
+
+enum ShippingStatus {
+  unknown
+  label_created
+  in_transit
+  out_for_delivery
+  delivered
+  exception
+  returned
+}
+
+enum ChatSessionStatus {
+  open
+  pending_human
+  closed
+}
+
+enum ChatMessageRole {
+  user
+  assistant
+  system
+  agent
+}
+
+enum TicketStatus {
+  open
+  escalated
+  resolved
+}
+
+enum EmbeddingSource {
+  page
+  faq
+  product
+}
+
+model User {
+  id               String           @id @default(cuid())
+  email            String           @unique
+  emailVerified    DateTime?
+  passwordHash     String
+  firstName        String
+  lastName         String
+  role             Role             @default(customer)
+  stripeCustomerId String?
+  addresses        Address[]
+  orders           Order[]
+  savedDesigns     SavedDesign[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  resetTokens      PasswordResetToken[]
+  verifyTokens     EmailVerifyToken[]
+  chatSessions     ChatSession[]
+}
+
+model Address {
+  id        String  @id @default(cuid())
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  label     String
+  line1     String
+  line2     String?
+  city      String
+  state     String
+  postal    String
+  country   String
+  isDefault Boolean @default(false)
+}
+
+model Page {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  content   String
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  title     String
+  subtitle  String?
+  imageUrl  String
+  ctaLabel  String?
+  ctaHref   String?
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  name      String
+  products  Product[]
+}
+
+model Collection {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  name      String
+  products  Product[]
+}
+
+model Product {
+  id          String       @id @default(cuid())
+  slug        String       @unique
+  name        String
+  description String
+  basePrice   Int
+  images      String[]
+  options     Json
+  categories  Category[]
+  collections Collection[]
+  published   Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Order {
+  id             String        @id @default(cuid())
+  user           User?         @relation(fields: [userId], references: [id])
+  userId         String?
+  stripeId       String?       @unique
+  email          String
+  items          Json
+  subtotal       Int
+  shipping       Int
+  tax            Int
+  total          Int
+  currency       String
+  status         OrderStatus   @default(pending)
+  receiptUrl     String?
+  shippingName   String?
+  shippingAddress Json?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  shipment       Shipment?
+}
+
+model Shipment {
+  id            String          @id @default(cuid())
+  order         Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId       String          @unique
+  carrier       String
+  trackingNumber String
+  trackingUrl   String
+  status        ShippingStatus @default(unknown)
+  events        TrackingEvent[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model TrackingEvent {
+  id         String    @id @default(cuid())
+  shipment   Shipment  @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  shipmentId String
+  description String
+  location    String?
+  occurredAt  DateTime
+  createdAt   DateTime @default(now())
+}
+
+model SavedDesign {
+  id         String   @id @default(cuid())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  name       String
+  svgKey     String
+  previewKey String
+  config     Json
+  createdAt  DateTime @default(now())
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model EmailVerifyToken {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model ChatSession {
+  id        String            @id @default(cuid())
+  user      User?             @relation(fields: [userId], references: [id])
+  userId    String?
+  status    ChatSessionStatus @default(open)
+  messages  ChatMessage[]
+  ticket    Ticket?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model ChatMessage {
+  id        String          @id @default(cuid())
+  session   ChatSession     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  sessionId String
+  role      ChatMessageRole
+  content   String
+  meta      Json?
+  createdAt DateTime        @default(now())
+}
+
+model Ticket {
+  id         String      @id @default(cuid())
+  session    ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  sessionId  String      @unique
+  email      String?
+  phone      String?
+  subject    String?
+  status     TicketStatus @default(open)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+}
+
+model EmbeddingDoc {
+  id        String           @id @default(cuid())
+  source    EmbeddingSource
+  sourceId  String
+  title     String
+  url       String?
+  chunk     String
+  embedding Bytes
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

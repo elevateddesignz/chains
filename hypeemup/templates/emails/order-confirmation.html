@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Your HypeEmUp Order</title>
+    <style>
+      body { font-family: Arial, sans-serif; background: #0b1f3a; color: #ffffff; padding: 32px; }
+      .card { background: #101f35; border-radius: 16px; padding: 24px; max-width: 640px; margin: 0 auto; box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45); }
+      h1 { color: #ff6f3c; }
+      table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+      th, td { padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+      .total { font-size: 18px; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Thanks for your order!</h1>
+      <p>We received your hype chain order ORDER_ID. You'll get tracking details once it ships.</p>
+      <table>
+        <tr>
+          <th align="left">Item</th>
+          <th align="right">Qty</th>
+          <th align="right">Price</th>
+        </tr>
+        ORDER_ROWS
+        <tr>
+          <td colspan="2" align="right">Subtotal</td>
+          <td align="right">SUBTOTAL</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">Shipping</td>
+          <td align="right">SHIPPING</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="right">Tax</td>
+          <td align="right">TAX</td>
+        </tr>
+        <tr class="total">
+          <td colspan="2" align="right">Total</td>
+          <td align="right">TOTAL</td>
+        </tr>
+      </table>
+      <p>Track your order any time: <a href="https://hypeemup.com/account/orders" style="color: #ff6f3c;">View orders</a></p>
+    </div>
+  </body>
+</html>
