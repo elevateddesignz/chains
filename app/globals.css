@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0f0f1a;
+  color: #f8f9ff;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bg-grid {
+  background-image: radial-gradient(rgba(108, 92, 231, 0.3) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.section-container {
+  @apply mx-auto w-full max-w-6xl px-6 py-24 sm:px-8;
+}
+
+.card {
+  @apply rounded-3xl border border-white/10 bg-white/5 p-8 shadow-glow transition hover:border-primary/60 hover:shadow-glow;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #6c5ce7 0%, #ff6b6b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,22 @@
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="520" rx="32" fill="#0F1628"/>
+  <rect x="60" y="80" width="680" height="160" rx="24" fill="#162B4E"/>
+  <rect x="60" y="280" width="320" height="160" rx="24" fill="url(#pulseGradient)"/>
+  <rect x="420" y="280" width="320" height="160" rx="24" fill="#162B4E"/>
+  <text x="90" y="140" fill="#9BD2FF" font-family="'Manrope', 'Helvetica Neue', sans-serif" font-size="26" font-weight="600">
+    PulsePay Founders Circle
+  </text>
+  <text x="90" y="180" fill="white" font-family="'Manrope', 'Helvetica Neue', sans-serif" font-size="18" font-weight="500">
+    2x qualified pipeline. 40% faster enterprise close rate.
+  </text>
+  <text x="90" y="340" fill="white" font-family="'Manrope', 'Helvetica Neue', sans-serif" font-size="24" font-weight="700">VIP Beta Lounge</text>
+  <text x="450" y="340" fill="#C9E7FF" font-family="'Manrope', 'Helvetica Neue', sans-serif" font-size="18" font-weight="500">
+    Instrumented experiences with QR-to-CRM capture and live dashboards.
+  </text>
+  <defs>
+    <linearGradient id="pulseGradient" x1="60" y1="280" x2="380" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3BC9F6"/>
+      <stop offset="1" stop-color="#1B3B84"/>
+    </linearGradient>
+  </defs>
+</svg>

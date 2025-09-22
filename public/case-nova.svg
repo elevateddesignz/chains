@@ -1,0 +1,20 @@
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="520" rx="32" fill="#101022"/>
+  <rect x="60" y="60" width="320" height="200" rx="24" fill="url(#gradient1)"/>
+  <rect x="420" y="60" width="320" height="200" rx="24" fill="url(#gradient2)"/>
+  <rect x="60" y="300" width="680" height="160" rx="24" fill="#161638"/>
+  <text x="90" y="340" fill="white" font-family="'Manrope', 'Helvetica Neue', sans-serif" font-size="32" font-weight="700">Nova Athletics Pop-Up</text>
+  <text x="90" y="380" fill="#C9C7FF" font-family="'Manrope', 'Helvetica Neue', sans-serif" font-size="18" font-weight="500">
+    Sold out 12k units in 36 hours. 18k net-new subscribers captured on-site.
+  </text>
+  <defs>
+    <linearGradient id="gradient1" x1="60" y1="60" x2="380" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6C5CE7"/>
+      <stop offset="1" stop-color="#2E2E59"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="420" y1="60" x2="740" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6B6B"/>
+      <stop offset="1" stop-color="#321823"/>
+    </linearGradient>
+  </defs>
+</svg>
