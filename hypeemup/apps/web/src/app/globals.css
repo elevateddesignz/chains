@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+<<<<<<< ours
   color-scheme: dark;
 }
 
@@ -12,4 +13,42 @@ body {
 
 main {
   @apply flex-1;
+=======
+  color-scheme: light;
+}
+
+@layer base {
+  :root {
+    --background: 214 80% 97%;
+    --foreground: 222 47% 11%;
+    --muted: 214 32% 90%;
+    --muted-foreground: 215 16% 35%;
+    --border: 215 27% 84%;
+    --input: 215 27% 84%;
+    --ring: 24 100% 61%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 219 62% 11%;
+    --foreground: 216 33% 92%;
+    --muted: 222 47% 20%;
+    --muted-foreground: 215 20% 72%;
+    --border: 222 36% 24%;
+    --input: 222 36% 24%;
+    --ring: 24 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] min-h-screen antialiased;
+  }
+
+  main {
+    @apply flex-1;
+  }
+>>>>>>> theirs
 }

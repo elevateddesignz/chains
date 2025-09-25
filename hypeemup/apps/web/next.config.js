@@ -5,9 +5,12 @@ const nextConfig = {
     typedRoutes: true,
   },
   output: 'export',
+<<<<<<< ours
   images: {
     unoptimized: true,
   },
+=======
+>>>>>>> theirs
 };
 
 module.exports = nextConfig;
