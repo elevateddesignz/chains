@@ -6,8 +6,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-<<<<<<< ours
-=======
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         border: 'hsl(var(--border))',
@@ -17,7 +15,6 @@ const config: Config = {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
         },
->>>>>>> theirs
         brand: {
           navy: '#0b1f3a',
           orange: '#ff6f3c',
