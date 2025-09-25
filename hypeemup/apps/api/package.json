@@ -4,11 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-<<<<<<< ours
     "dev": "tsx watch src/server.ts",
-=======
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
->>>>>>> theirs
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/server.js",
     "lint": "eslint --ext .ts src",
@@ -23,11 +19,7 @@
     "@prisma/client": "^5.13.0",
     "@tanstack/query-core": "^5.31.0",
     "argon2": "^0.31.2",
-<<<<<<< ours
     "cookie": "^1.0.2",
-=======
-    "cookie": "^0.6.0",
->>>>>>> theirs
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2",
@@ -35,10 +27,6 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-<<<<<<< ours
-    "next": "14.2.33",
-=======
->>>>>>> theirs
     "pg": "^8.11.3",
     "stripe": "^14.22.0",
     "uuid": "^9.0.1",
@@ -61,15 +49,8 @@
     "supertest": "^6.3.4",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-<<<<<<< ours
     "tsx": "^4.20.5",
     "typescript": "5.4.4",
     "vitest": "^3.2.4"
   }
 }
-=======
-    "typescript": "5.4.4",
-    "vitest": "^1.4.0"
-  }
-}
->>>>>>> theirs
