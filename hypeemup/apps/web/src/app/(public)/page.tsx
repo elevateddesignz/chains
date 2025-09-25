@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ProductGrid } from '@/components/layout/product-grid';
@@ -11,6 +12,40 @@ interface ProductSummary {
   basePrice: number;
   images: string[];
 }
+
+interface HeroPolaroid {
+  src: string;
+  alt: string;
+  caption: string;
+  className: string;
+}
+
+const HERO_POLAROIDS: HeroPolaroid[] = [
+  {
+    src: '/images/polaroids/polaroid-1.jpg',
+    alt: 'Two fans holding Breezy Bowl chains.',
+    caption: 'Breezy Bowl hype',
+    className: 'left-2 top-2 -rotate-6 sm:left-6',
+  },
+  {
+    src: '/images/polaroids/polaroid-2.jpg',
+    alt: 'Mirror selfie showing custom Breezy Bowl chain.',
+    caption: 'Custom looks',
+    className: 'right-4 top-[18%] rotate-3 sm:right-10',
+  },
+  {
+    src: '/images/polaroids/polaroid-3.jpg',
+    alt: 'Fan at the stadium wearing a Team Breezy chain.',
+    caption: 'In the crowd',
+    className: 'left-[18%] bottom-6 rotate-6 sm:left-[22%]',
+  },
+  {
+    src: '/images/polaroids/polaroid-4.jpg',
+    alt: 'Graduate wearing a custom Class of 2025 chain.',
+    caption: 'Milestone moments',
+    className: 'right-6 bottom-1 -rotate-2 sm:right-10',
+  },
+];
 
 async function getFeaturedProducts(): Promise<ProductSummary[]> {
   try {
@@ -29,7 +64,7 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-16">
-      <section className="grid gap-8 rounded-3xl bg-gradient-to-br from-brand-slate/90 to-black/60 p-12">
+      <section className="grid gap-10 rounded-3xl bg-gradient-to-br from-brand-slate/90 to-black/60 p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
         <div className="space-y-6">
           <span className="inline-flex items-center rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-widest text-white/60">
             Custom 3D-printed hype chains
@@ -53,6 +88,30 @@ export default async function HomePage() {
             >
               Browse shop
             </Link>
+          </div>
+        </div>
+        <div className="hidden justify-center lg:flex">
+          <div className="relative h-[360px] w-[260px] sm:h-[420px] sm:w-[320px]">
+            {HERO_POLAROIDS.map((polaroid) => (
+              <div
+                key={polaroid.src}
+                className={`absolute flex w-40 flex-col items-center rounded-md border border-slate-200/70 bg-white px-3 pb-6 pt-3 text-center shadow-[0_18px_45px_rgba(15,23,42,0.45)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.6)] sm:w-48 ${polaroid.className}`}
+              >
+                <div className="relative h-36 w-full overflow-hidden rounded-sm sm:h-44">
+                  <Image
+                    src={polaroid.src}
+                    alt={polaroid.alt}
+                    fill
+                    sizes="(min-width: 1024px) 12rem, 8rem"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <span className="mt-4 text-xs font-semibold uppercase tracking-[0.18rem] text-slate-500">
+                  {polaroid.caption}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
