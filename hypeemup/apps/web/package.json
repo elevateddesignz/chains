@@ -18,16 +18,9 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-<<<<<<< ours
-    "cookie": "1.0.2",
-    "framer-motion": "^11.1.7",
-    "lucide-react": "^0.378.0",
-    "next": "^14.2.33",
-=======
     "framer-motion": "^11.1.7",
     "lucide-react": "^0.378.0",
     "next": "14.2.3",
->>>>>>> theirs
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -35,13 +28,9 @@
     "swr": "^2.2.4",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-<<<<<<< ours
-    "zod": "^3.23.8",
-    "zustand": "^4.5.2"
-=======
     "zustand": "^4.5.2",
     "zod": "^3.23.8"
->>>>>>> theirs
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "20.12.7",
