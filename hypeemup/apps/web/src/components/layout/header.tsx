@@ -27,22 +27,13 @@ export function Header() {
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.png"
-<<<<<<< ours
-            alt="HypeEmUp"
-            width={512}
-            height={512}
-            className="h-10 w-auto"
-            priority
-          />
-          <span className="sr-only">HypeEmUp</span>
-=======
             alt="HypeEmUp logo"
             width={160}
             height={40}
             className="h-10 w-auto"
             priority
           />
->>>>>>> theirs
+          <span className="sr-only">HypeEmUp</span>
         </Link>
         <nav className="hidden gap-6 md:flex">
           {NAV_LINKS.map((link) => (
