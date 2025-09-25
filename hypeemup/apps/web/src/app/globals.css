@@ -3,17 +3,6 @@
 @tailwind utilities;
 
 :root {
-<<<<<<< ours
-  color-scheme: dark;
-}
-
-body {
-  @apply bg-brand-navy text-white min-h-screen;
-}
-
-main {
-  @apply flex-1;
-=======
   color-scheme: light;
 }
 
@@ -50,5 +39,4 @@ main {
   main {
     @apply flex-1;
   }
->>>>>>> theirs
 }
