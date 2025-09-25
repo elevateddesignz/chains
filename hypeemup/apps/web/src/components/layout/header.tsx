@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
@@ -23,8 +24,16 @@ export function Header() {
   return (
     <header className="border-b border-white/10 bg-brand-slate/40 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 md:px-8">
-        <Link href="/" className="text-xl font-bold text-white">
-          HypeEmUp
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="HypeEmUp"
+            width={512}
+            height={512}
+            className="h-10 w-auto"
+            priority
+          />
+          <span className="sr-only">HypeEmUp</span>
         </Link>
         <nav className="hidden gap-6 md:flex">
           {NAV_LINKS.map((link) => (
