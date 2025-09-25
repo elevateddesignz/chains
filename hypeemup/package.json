@@ -1,11 +1,8 @@
 {
-<<<<<<< ours
-=======
   "name": "hypeemup",
   "private": true,
   "version": "0.1.0",
-  "packageManager": "pnpm@8.15.3",
->>>>>>> theirs
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "dev:web": "pnpm --filter web dev",
     "dev:api": "pnpm --filter api dev",
@@ -14,17 +11,11 @@
     "lint:web": "pnpm --filter web lint",
     "lint:api": "pnpm --filter api lint",
     "test": "pnpm --filter api test",
-<<<<<<< ours
     "format": "pnpm --filter web format && pnpm --filter api format",
     "auto-push": "node auto-push.js"
-  },
-  "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531"
-=======
-    "format": "pnpm --filter web format && pnpm --filter api format"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ]
->>>>>>> theirs
 }
