@@ -90,8 +90,8 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="hidden justify-center lg:flex">
-          <div className="relative h-[360px] w-[260px] sm:h-[420px] sm:w-[320px]">
+        <div className="flex justify-center lg:justify-end">
+          <div className="relative mt-4 h-[320px] w-[240px] sm:mt-0 sm:h-[380px] sm:w-[300px]">
             {HERO_POLAROIDS.map((polaroid) => (
               <div
                 key={polaroid.src}
